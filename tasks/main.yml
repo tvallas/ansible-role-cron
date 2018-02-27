@@ -1,0 +1,27 @@
+---
+# tasks file for cron
+
+- name: Ensure cron is installed
+  package:
+    name: cronie
+    state: installed
+
+- name: Create crontab entries
+  cron:
+    name: Crontab entry for "{{ item.name }}"
+    cron_file: "{{ item.cron_file | default() }}"
+    month: "{{ item.month | default(cron_default_month) }}"
+    weekday: "{{ item.weekday | default(cron_default_weekday) }}"
+    day: "{{ item.day | default(cron_default_day) }}"
+    hour: "{{ item.hour | default(cron_default_hour) }}"
+    minute: "{{ item.minute | default(cron_default_minute) }}"
+    state: "{{ item.entry_state | default(cron_default_entry_state) }}"
+    user: "{{ item.user }}"
+    job: "{{ item.command}}"
+  with_items: "{{ cron_entries }}"
+
+- name: Configure cron service state
+  systemd:
+    name: crond
+    state: "{{ cron_service_state }}"
+    enabled: "{{ cron_service_enabled }}"

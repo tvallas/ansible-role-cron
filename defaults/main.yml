@@ -1,0 +1,28 @@
+---
+# defaults file for cron
+
+# example:
+# cron_entries:
+#   - name: script_name_goes_here
+#     user: script_user
+#     cron_file: my_cron_entry
+#     command: /bin/true
+#     month: "*"
+#     weekday: "*"
+#     day: "*"
+#     hour: "0"
+#     minute: "0"
+#     entry_state: present
+
+cron_entries: []
+
+cron_default_month: "*"
+cron_default_weekday: "*"
+cron_default_day: "*"
+cron_default_hour: "*"
+cron_default_minute: "0"
+
+cron_default_entry_state: present
+
+cron_service_state: started
+cron_service_enabled: yes
