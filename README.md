@@ -73,4 +73,4 @@ MIT
 Author Information
 ------------------
 
-Tuomas Vallaskangas/Nokeval
+Tuomas Vallaskangas
